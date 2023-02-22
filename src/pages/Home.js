@@ -6,6 +6,8 @@ import {
   Center,
   Text,
   Container,
+  SimpleGrid,
+  Box,
 } from '@chakra-ui/react';
 import { PokemonCard } from '../components';
 import { listPokemons } from '../redux/actions/pokemonActions';
@@ -28,11 +30,16 @@ export default function Home() {
     <>
       <Container maxW="1200px">
         <Text fontSize="4xl">POKEMON LIST </Text>
-        <Grid templateColumns="repeat(4, 1fr)" gap={6} className="px-12">
+        {/* <Grid templateColumns="repeat(4, 1fr)" gap={6} className="px-12"> */}
+        <SimpleGrid minChildWidth="260px" spacing="40px">
           {pokemon.map((item, index) => (
-            <PokemonCard key={index} index={index} item={item} />
+            <Box height="450px" key={index}>
+              {' '}
+              <PokemonCard index={index} item={item} />
+            </Box>
           ))}
-        </Grid>
+        </SimpleGrid>
+        {/* </Grid> */}
         <Grid>
           <Center h="60px" color="white">
             {loading ? (
@@ -51,6 +58,7 @@ export default function Home() {
           </Center>
         </Grid>
       </Container>
+      {/*  */}
     </>
   );
 }
